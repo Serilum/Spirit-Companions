@@ -1,0 +1,47 @@
+pluginManagement {
+
+    repositories {
+
+        maven { url = uri('https://maven.serilum.com/') }
+
+        maven {
+
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        
+        maven {
+        
+            name = 'Sponge Snapshots'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+        
+        maven {
+        
+            name = 'Quilt (Release)'
+            url = 'https://maven.quiltmc.org/repository/release'
+        }
+        
+        maven {
+        
+            name = 'Quilt (Snapshot)'
+            url = 'https://maven.quiltmc.org/repository/snapshot'
+        }
+
+        maven {
+            name = 'Cotton'
+            url = 'https://server.bbkr.space/artifactory/libs-release/'
+        }
+
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    plugins {
+        id 'com.serilum.tether' version '1.+'
+    }
+}
+
+rootProject.name = 'Spirit-Companions-1,20,1'
+include("Common")
+include("Fabric")
+include("Forge")

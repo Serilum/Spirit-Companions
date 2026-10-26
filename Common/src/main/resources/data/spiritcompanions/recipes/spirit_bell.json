@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" G ",
+		"PBP",
+		" G "
+	],
+	"key": {
+		"P": {
+			"item": "minecraft:phantom_membrane"
+		},
+		"B": {
+			"item": "minecraft:bell"
+		},
+		"G": {
+			"item": "minecraft:ghast_tear"
+		}
+	},
+	"result": {
+		"item": "spiritcompanions:spirit_bell",
+		"count": 1
+	}
+}

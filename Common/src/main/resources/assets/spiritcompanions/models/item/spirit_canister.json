@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spiritcompanions:item/spirit_canister"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "spiritcompanions:filled": 1
+      },
+      "model": "spiritcompanions:item/spirit_canister_filled"
+    }
+  ]
+}

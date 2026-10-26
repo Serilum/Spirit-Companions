@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" G ",
+		"PLP",
+		" G "
+	],
+	"key": {
+		"P": {
+			"item": "minecraft:phantom_membrane"
+		},
+		"L": {
+			"item": "minecraft:lead"
+		},
+		"G": {
+			"item": "minecraft:ghast_tear"
+		}
+	},
+	"result": {
+		"item": "spiritcompanions:spirit_collar",
+		"count": 1
+	}
+}
