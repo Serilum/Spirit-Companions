@@ -1,0 +1,35 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "spiritcompanions:item/spirit_lantern"
+    },
+    "on_true": {
+      "type": "minecraft:range_dispatch",
+      "entries": [
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "spiritcompanions:item/spirit_lantern_charging_1"
+          },
+          "threshold": 0.35
+        },
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "spiritcompanions:item/spirit_lantern_charging_2"
+          },
+          "threshold": 0.7
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "spiritcompanions:item/spirit_lantern_charging_0"
+      },
+      "property": "minecraft:use_duration",
+      "scale": 0.01
+    },
+    "property": "minecraft:using_item"
+  }
+}

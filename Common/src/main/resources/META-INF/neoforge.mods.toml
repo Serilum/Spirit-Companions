@@ -1,0 +1,37 @@
+modLoader="javafml"
+loaderVersion="*"
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/Serilum/.issue-tracker/labels/Mod:%20Spirit%20Companions"
+iconFile="icon.png"
+
+[[mods]]
+modId="spiritcompanions"
+version="1.0"
+displayName="Spirit Companions"
+displayURL="https://curseforge.com/minecraft/mc-mods/spirit-companions"
+authors="Serilum"
+description='''Turn any mob into a translucent spirit companion that follows you! Adds the Spirit Lantern, Bell, Canister, Collar and Saddle. Made for SpookyJam 2026.
+'''
+credits='''Thank you very much to my Membership sponsors for supporting the development of this mod:  
+
+AnyankaT, aternosorg, Cherriesaurus, Linda Jansen, MWS, Tyler Behl   
+
+If you would like to contribute too, check out https://serilum.com/donate Appreciate it! <3   
+'''
+
+[[dependencies.spiritcompanions]]
+    modId="collective"
+    type="required"
+    versionRange="[8.66,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.spiritcompanions]]
+    modId="minecraft"
+    type="required"
+    versionRange="[26.3]"
+    ordering="NONE"
+    side="BOTH"
+
+[[mixins]]
+    config = "spiritcompanions.mixins.json"

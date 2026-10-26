@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 0.0,
+  "ingredient": "spiritcompanions:empty_spirit_lantern",
+  "result": {
+    "id": "spiritcompanions:spirit_lantern"
+  }
+}
