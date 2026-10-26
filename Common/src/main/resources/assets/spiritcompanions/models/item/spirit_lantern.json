@@ -1,0 +1,26 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spiritcompanions:item/spirit_lantern"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "spiritcompanions:charging": 0.01
+      },
+      "model": "spiritcompanions:item/spirit_lantern_charging_0"
+    },
+    {
+      "predicate": {
+        "spiritcompanions:charging": 0.35
+      },
+      "model": "spiritcompanions:item/spirit_lantern_charging_1"
+    },
+    {
+      "predicate": {
+        "spiritcompanions:charging": 0.7
+      },
+      "model": "spiritcompanions:item/spirit_lantern_charging_2"
+    }
+  ]
+}

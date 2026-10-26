@@ -1,0 +1,42 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.serilum.spiritcompanions.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+  	"AbstractHorseAccessor",
+  	"AbstractHorseMixin",
+  	"CampfireBlockEntityMixin",
+  	"EntityMixin",
+  	"HorseInventoryMenuSlotMixin",
+  	"LivingEntityInvoker",
+  	"LivingEntityMixin",
+  	"MobMixin",
+  	"PlayerListMixin",
+  	"PlayerMixin",
+  	"ServerPlayerMixin",
+  	"TamableAnimalMixin"
+  ],
+  "client": [
+  	"EntityRenderDispatcherMixin",
+  	"GameRendererMixin",
+  	"GuiMixin",
+  	"HorseArmorLayerMixin",
+  	"HorseMarkingLayerMixin",
+  	"HumanoidArmorLayerMixin",
+  	"ItemInHandRendererMixin",
+  	"ItemPropertiesInvoker",
+  	"LivingEntityRendererMixin",
+  	"ModelMixin",
+  	"RenderLayerMixin",
+  	"RenderTypeMixin",
+  	"SingleQuadParticleMixin",
+  	"WolfCollarLayerMixin"
+  ],
+  "server": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

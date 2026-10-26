@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "spiritcompanions",
+  "version": "1.0",
+
+  "name": "Spirit Companions",
+  "description": "Turn any mob into a translucent spirit companion that follows you! Adds the Spirit Lantern, Bell, Canister, Collar and Saddle. Made for SpookyJam 2026.",
+  "authors": [ "Serilum" ],
+  "contact": {
+    "homepage": "https://serilum.com/mod/spirit-companions",
+    "sources": "https://github.com/Serilum/Spirit-Companions",
+    "issues": "https://github.com/Serilum/.issue-tracker/labels/Mod:%20Spirit%20Companions"
+  },
+
+  "license": "All Rights Reserved",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": { "main": [ "com.serilum.spiritcompanions.ModFabric" ],"modmenu": [ "com.serilum.spiritcompanions.fabric.config.IntegrateModMenu" ] },
+  "mixins": [
+    "spiritcompanions.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": ">=1.21",
+    "java": ">=21",
+    "collective": ">=8.66"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "❤ Patreon" : "https://link.serilum.com/patreon"
+      }
+    }
+  },
+
+  "contributors": [
+	  " ",
+	  "Thank you very much to my Membership sponsors for supporting the development of this mod!",
+	  " ",
+	  "If you would like to contribute too, check out https://serilum.com/donate",
+	  " ",
+	  "Membership sponsors:",
+	  " AnyankaT",
+	  " aternosorg",
+	  " Cherriesaurus",
+	  " Linda Jansen",
+	  " MWS",
+	  " Tyler Behl"
+  ]
+}
