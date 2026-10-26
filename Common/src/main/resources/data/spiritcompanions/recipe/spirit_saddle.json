@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" G ",
+		"PSP",
+		" G "
+	],
+	"key": {
+		"P": "minecraft:phantom_membrane",
+		"S": "minecraft:saddle",
+		"G": "minecraft:ghast_tear"
+	},
+	"result": {
+		"id": "spiritcompanions:spirit_saddle",
+		"count": 1
+	}
+}
