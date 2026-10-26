@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" G ",
+		"PSP",
+		" G "
+	],
+	"key": {
+		"P": "minecraft:phantom_membrane",
+		"S": "minecraft:soul_lantern",
+		"G": "minecraft:ghast_tear"
+	},
+	"result": {
+		"id": "spiritcompanions:empty_spirit_lantern",
+		"count": 1
+	}
+}
