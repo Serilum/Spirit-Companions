@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "spiritcompanions",
-  "version": "1.0",
+  "version": "1.1",
 
   "name": "Spirit Companions",
   "description": "Turn any mob into a translucent spirit companion that follows you! Adds the Spirit Lantern, Bell, Canister, Collar and Saddle. Made for SpookyJam 2026.",
@@ -26,7 +26,7 @@
     "fabric-api": "*",
     "minecraft": ">=26.1",
     "java": ">=25",
-    "collective": ">=8.32"
+    "collective": ">=8.68"
   },
 
   "custom": {

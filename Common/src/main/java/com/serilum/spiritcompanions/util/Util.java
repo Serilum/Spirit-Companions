@@ -1,5 +1,6 @@
 package com.serilum.spiritcompanions.util;
 
+import com.natamus.collective.services.Services;
 import com.serilum.spiritcompanions.config.ConfigHandler;
 import com.serilum.spiritcompanions.data.PendingSpiritReturn;
 import com.serilum.spiritcompanions.data.SpiritItems;
@@ -73,19 +74,19 @@ public class Util {
 	private static final DustParticleOptions huskDustParticle = new DustParticleOptions(0x8C9096, 0.9F);
 
 	public static boolean isSpirit(Entity entity) {
-		return EntityData.getInt(entity, spiritDataId, 0) == 1;
+		return Services.ENTITYDATA.getInt(entity, spiritDataId, 0) == 1;
 	}
 
 	public static void setSpirit(Entity entity) {
-		EntityData.setInt(entity, spiritDataId, 1);
+		Services.ENTITYDATA.setInt(entity, spiritDataId, 1);
 	}
 
 	public static boolean hasSpiritCollar(Entity entity) {
-		return EntityData.getInt(entity, spiritCollarDataId, 0) == 1;
+		return Services.ENTITYDATA.getInt(entity, spiritCollarDataId, 0) == 1;
 	}
 
 	public static boolean isHusk(Entity entity) {
-		return EntityData.getInt(entity, huskDataId, 0) == 1;
+		return Services.ENTITYDATA.getInt(entity, huskDataId, 0) == 1;
 	}
 
 	private static void turnIntoHusk(Mob mob) {
@@ -93,7 +94,7 @@ public class Util {
 		mob.setNoAi(true);
 		mob.setSilent(true);
 		setStoredInt(mob, huskSinceDataId, (int)mob.level().getGameTime());
-		EntityData.setInt(mob, huskDataId, 1);
+		Services.ENTITYDATA.setInt(mob, huskDataId, 1);
 		Variables.husksMadeThisSession.add(mob);
 	}
 
@@ -106,13 +107,13 @@ public class Util {
 			return 1.0F;
 		}
 
-		float elapsedTicks = husk.level().getGameTime() - EntityData.getInt(husk, huskSinceDataId, 0);
+		float elapsedTicks = husk.level().getGameTime() - Services.ENTITYDATA.getInt(husk, huskSinceDataId, 0);
 		return Mth.clamp(1.0F - elapsedTicks / (ConfigHandler.huskWitherSeconds * 20.0F), 0.0F, 1.0F);
 	}
 
 	public static float getSpiritAppearProgress(Entity spirit) {
-		float elapsedTicks = spirit.level().getGameTime() - EntityData.getInt(spirit, spiritSinceDataId, 0);
-		float appearTicks = EntityData.getInt(spirit, spiritAppearTicksDataId, 60);
+		float elapsedTicks = spirit.level().getGameTime() - Services.ENTITYDATA.getInt(spirit, spiritSinceDataId, 0);
+		float appearTicks = Services.ENTITYDATA.getInt(spirit, spiritAppearTicksDataId, 60);
 		return Mth.clamp(elapsedTicks / appearTicks, 0.0F, 1.0F);
 	}
 
@@ -163,15 +164,15 @@ public class Util {
 	}
 
 	private static void setStoredInt(Entity entity, Identifier id, int value) {
-		CompoundTag data = EntityData.getStored(entity);
+		CompoundTag data = Services.ENTITYDATA.getStored(entity);
 		data.putInt(id.toString(), value);
-		EntityData.setStored(entity, data);
+		Services.ENTITYDATA.setStored(entity, data);
 	}
 
 	private static void reviveHusk(Mob husk) {
 		husk.setNoAi(false);
 		husk.setSilent(false);
-		EntityData.setInt(husk, huskDataId, 0);
+		Services.ENTITYDATA.setInt(husk, huskDataId, 0);
 	}
 
 	public static void setSpiritOwner(Mob spirit, Player owner) {
@@ -217,13 +218,13 @@ public class Util {
 	}
 
 	private static void setStoredString(Entity entity, Identifier id, String value) {
-		CompoundTag data = EntityData.getStored(entity);
+		CompoundTag data = Services.ENTITYDATA.getStored(entity);
 		data.putString(id.toString(), value);
-		EntityData.setStored(entity, data);
+		Services.ENTITYDATA.setStored(entity, data);
 	}
 
 	private static String getStoredString(Entity entity, Identifier id) {
-		return EntityData.getStored(entity).getStringOr(id.toString(), "");
+		return Services.ENTITYDATA.getStored(entity).getStringOr(id.toString(), "");
 	}
 
 	public static CompoundTag saveMobCopyData(ServerLevel serverLevel, Mob mob) {
@@ -275,7 +276,7 @@ public class Util {
 		float alreadyDrained = Math.max(getHuskTintProgress(target), 0.0F);
 		int extractingSince = (int)(serverLevel.getGameTime() - alreadyDrained * getExtractionTicks());
 		setStoredInt(target, extractionRecoveryFromDataId, 0);
-		EntityData.setInt(target, extractingSinceDataId, extractingSince);
+		Services.ENTITYDATA.setInt(target, extractingSinceDataId, extractingSince);
 		return true;
 	}
 
@@ -289,12 +290,12 @@ public class Util {
 			return extractionProgress;
 		}
 
-		float recoveryFrom = EntityData.getInt(entity, extractionRecoveryFromDataId, 0) / getExtractionTicks();
+		float recoveryFrom = Services.ENTITYDATA.getInt(entity, extractionRecoveryFromDataId, 0) / getExtractionTicks();
 		if (recoveryFrom <= 0.0F) {
 			return -1.0F;
 		}
 
-		float elapsedTicks = entity.level().getGameTime() - EntityData.getInt(entity, extractionRecoverySinceDataId, 0);
+		float elapsedTicks = entity.level().getGameTime() - Services.ENTITYDATA.getInt(entity, extractionRecoverySinceDataId, 0);
 		float remaining = recoveryFrom - elapsedTicks / (getExtractionTicks() * 2.0F);
 		if (remaining <= 0.0F) {
 			return -1.0F;
@@ -303,7 +304,7 @@ public class Util {
 	}
 
 	public static float getExtractionProgress(Entity entity) {
-		int extractingSince = EntityData.getInt(entity, extractingSinceDataId, 0);
+		int extractingSince = Services.ENTITYDATA.getInt(entity, extractingSinceDataId, 0);
 		if (extractingSince == 0) {
 			return -1.0F;
 		}
@@ -376,7 +377,7 @@ public class Util {
 				target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, recoveryTicks, 1, true, true));
 			}
 		}
-		EntityData.setInt(target, extractingSinceDataId, 0);
+		Services.ENTITYDATA.setInt(target, extractingSinceDataId, 0);
 	}
 
 	private static boolean isExtractionTargetInView(Player player, Mob target) {
@@ -692,19 +693,19 @@ public class Util {
 			return false;
 		}
 
-		if (EntityData.getInt(spirit, stayingDataId, 0) == 1) {
+		if (Services.ENTITYDATA.getInt(spirit, stayingDataId, 0) == 1) {
 			if (isAtSpiritLimit(player.level().getServer(), player.getUUID())) {
 				showSpiritLimitReached(player);
 				return false;
 			}
 
 			getSpiritState(spirit).landingPosition = null;
-			EntityData.setInt(spirit, stayingDataId, 0);
+			Services.ENTITYDATA.setInt(spirit, stayingDataId, 0);
 			showMessage(player, Component.translatable("collective.spiritcompanions.message.spiritfollows", spirit.getType().getDescription()), ChatFormatting.DARK_GREEN);
 		}
 		else {
 			getSpiritState(spirit).landingPosition = null;
-			EntityData.setInt(spirit, stayingDataId, 1);
+			Services.ENTITYDATA.setInt(spirit, stayingDataId, 1);
 			showMessage(player, Component.translatable("collective.spiritcompanions.message.spiritstays", spirit.getType().getDescription()), ChatFormatting.DARK_GREEN);
 		}
 		return true;
@@ -721,7 +722,7 @@ public class Util {
 			return;
 		}
 
-		EntityData.setInt(pet, spiritCollarDataId, 1);
+		Services.ENTITYDATA.setInt(pet, spiritCollarDataId, 1);
 		pet.setPersistenceRequired();
 		itemStack.shrink(1);
 		pet.playSound(SoundEvents.SOUL_ESCAPE.value(), 1.0F, 1.2F);
@@ -745,7 +746,7 @@ public class Util {
 			return;
 		}
 
-		int bondTicks = EntityData.getInt(pet, bondTicksDataId, 0);
+		int bondTicks = Services.ENTITYDATA.getInt(pet, bondTicksDataId, 0);
 		if (bondTicks >= maxBondTicks) {
 			return;
 		}
@@ -754,7 +755,7 @@ public class Util {
 	}
 
 	private static boolean rollsBondReturn(Mob pet) {
-		int bondDays = EntityData.getInt(pet, bondTicksDataId, 0) / 24000;
+		int bondDays = Services.ENTITYDATA.getInt(pet, bondTicksDataId, 0) / 24000;
 		return pet.getRandom().nextFloat() < bondDays / 7.0F;
 	}
 
@@ -802,7 +803,7 @@ public class Util {
 		}
 
 		Variables.pendingSpiritReturns.remove(body);
-		EntityData.setInt(body, spiritCollarDataId, 0);
+		Services.ENTITYDATA.setInt(body, spiritCollarDataId, 0);
 		returnPetAsSpirit(serverLevel, pendingSpiritReturn, body);
 	}
 
@@ -837,7 +838,7 @@ public class Util {
 			return true;
 		}
 
-		return EntityData.getInt(spirit, stayingDataId, 0) == 1;
+		return Services.ENTITYDATA.getInt(spirit, stayingDataId, 0) == 1;
 	}
 
 	public static SpiritState getSpiritState(Mob spirit) {

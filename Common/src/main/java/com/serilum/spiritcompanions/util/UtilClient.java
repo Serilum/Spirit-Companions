@@ -20,7 +20,6 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.Identifier;
@@ -35,7 +34,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -386,18 +384,6 @@ public class UtilClient {
 		}
 
 		spawnSpiritBodyParticle(minecraft, spirit, random, 0.01);
-	}
-
-	public static void applySyncedEntityData(int entityId, CompoundTag data) {
-		Level level = Minecraft.getInstance().level;
-		if (level == null) {
-			return;
-		}
-
-		Entity entity = level.getEntity(entityId);
-		if (entity != null) {
-			EntityData.setStored(entity, data);
-		}
 	}
 
 	public static void spawnSpiritBurst(LivingEntity spirit) {

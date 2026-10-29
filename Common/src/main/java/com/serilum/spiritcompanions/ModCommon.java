@@ -10,7 +10,6 @@ import com.serilum.spiritcompanions.item.SpiritBellItem;
 import com.serilum.spiritcompanions.item.SpiritCanisterItem;
 import com.serilum.spiritcompanions.item.SpiritCollarItem;
 import com.serilum.spiritcompanions.item.SpiritLanternItem;
-import com.serilum.spiritcompanions.networking.PacketRegistration;
 import com.serilum.spiritcompanions.util.Reference;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
@@ -31,7 +30,7 @@ public class ModCommon {
 	}
 
 	private static void load() {
-		new PacketRegistration().init();
+
 	}
 
 	public static void registerAssets(Object modEventBusObject) {
